@@ -6,6 +6,7 @@
     </field>
     <field name="is_mail_thread" eval="True"/>
     <field name="is_mail_activity" eval="True"/>
+      11
     <field name="model">x_test_test</field>
     <field name="name">test.test</field>
     <field name="state">manual</field>
