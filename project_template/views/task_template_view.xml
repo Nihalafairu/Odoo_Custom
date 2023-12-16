@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+<!--    task template tree view-->
+    <record id="project_task_template_tree_view" model="ir.ui.view">
+        <field name="name">project.task.template.view.tree</field>
+        <field name="model">task.template</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="customer_id"/>
+                <field name="company_id"/>
+            </tree>
+        </field>
+    </record>
+<!--    task template form view-->
+    <record id="project_task_template_form_view" model="ir.ui.view">
+        <field name="name">project.task.template.view.form</field>
+        <field name="model">task.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_create_task" class="oe_highlight" string="Create Task" type="object"/>
+                </header>
+                <sheet>
+                    <field name="name" placeholder="Task Title"/>
+                    <group>
+                        <group>
+                            <field name="project_id"/>
+                            <field name="milestone_id"/>
+                            <field name="assignees_ids" widget="many2many_avatar_user"/>
+                        </group>
+                        <group>
+                            <field name="customer_id"/>
+                            <field name="sale_line_id"/>
+                            <field name="deadline"/>
+                            <field name="tag_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description" placeholder="Project description..."/>
+                        </page>
+                        <page string="Sub Tasks">
+                            <field name="child_ids"/>
+                        </page>
+                        <page string="Extra Info">
+                            <group>
+                                <field name="company_id"/>
+                                <field name="sequence"/>
+                                <field name="email_cc"/>
+                            </group>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

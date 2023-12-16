@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <template id="warranty_snippet" name="Product Warranty">
+        <section class="oe_container dynamic_snippet_warranty">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 style="text-align:center">Product Warranty</h2>
+                    <div id="courosel">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+</odoo>

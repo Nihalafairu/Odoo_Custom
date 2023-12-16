@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.view.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+<!--            to add new button 'Sent to Manager' -->
+            <xpath expr="//header//button[@name='action_quotation_send']" position="after">
+                <button type="object" name="action_send_manager" string="send to Manager"
+                        groups="so_approval.group_sale_salesperson, !so_approval.group_sale_manager" attrs="{'invisible':[('state', '!=','draft')]}"/>
+            </xpath>
+<!--            to add new button 'Approve'-->
+            <xpath expr="//header//button[@name='action_quotation_send']" position="after">
+                <button type="object" name="action_send_approve" string="Approve"
+                        groups="so_approval.group_sale_manager" attrs="{'invisible':[('state', '!=','waiting')]}"/>
+            </xpath>
+<!--            to add new button disapprove-->
+            <xpath expr="//header//button[@name='action_quotation_send']" position="after">
+                <button type="object" name="action_send_disapprove" string="Disapprove"
+                        groups="so_approval.group_sale_manager" attrs="{'invisible':[('state', '!=','waiting')]}"/>
+            </xpath>
+<!--            to add new status to statusbar-->
+            <xpath expr="//header//field[@name='state']" position="replace">
+                <field name="state" widget="statusbar" statusbar_visible="draft,waiting,sent,sale"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

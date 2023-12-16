@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <record id="tolerance_wizard_form" model="ir.ui.view">
+        <field name="name">tolerance.wizard.form</field>
+        <field name="model">tolerance.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <span>Change in Tolerance. Do you want to Accept ?</span>
+                <footer>
+                    <button name="accept_tolerance" string="accept" type="object" class="btn-primary"/>
+                    <button string="cancel" special="cancel"  class="btn-primary"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+    <record id="tolerance_wizard_view" model="ir.actions.act_window">
+        <field name="name">tolerance accept form</field>
+        <field name="res_model">tolerance.wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_id" ref="tolerance_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

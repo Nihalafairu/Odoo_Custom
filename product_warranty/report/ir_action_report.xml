@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <record id="action_report_product_warranty" model="ir.actions.report">
+        <field name="name">Warranty Report</field>
+        <field name="model">product.warranty</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">product_warranty.report_warranty</field>
+        <field name="report_file">product_warranty.report_warranty</field>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

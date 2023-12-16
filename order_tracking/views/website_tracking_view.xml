@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <template id="website_tracking_order_view">
+        <t t-call="website.layout">
+            <div class="container">
+                <h2 style="text-align:center">Sale Orders</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Number</th>
+                            <th>Customer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="order_ids" t-as="order">
+                            <td>
+                                <a t-attf-href="/view/tracking{{slug(order)}}">
+                                    <span t-esc="order.name"/>
+                                </a>
+                            </td>
+                            <td>
+                                <a t-attf-href="/view/tracking{{slug(order)}}">
+                                    <span t-esc="order.partner_id.name"/>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </t>
+    </template>
+    <template id="website_tracking_view" name="Website Tracking">
+        <t t-call="website.layout">
+            <div class="container">
+                <t t-if="not tracking">
+                    <h2 style="text-align:center">Nothing to track</h2>
+                </t>
+                <t t-if="tracking">
+                    <h2 style="text-align:center">Track Your Order</h2>
+                    <div class="wizard-progress">
+                        <div class="step in-progress">
+                            <span t-esc="tracking.location_id[0].name"/>
+                            <div class="node"></div>
+                        </div>
+                        <t t-foreach="tracking" t-as="i">
+                            <t t-if="i">
+                                <div class="step in-progress">
+                                    <span t-esc="i.destination_id.name"/>
+                                    <div class="node"></div>
+                                </div>
+                            </t>
+                        </t>
+                    </div>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>

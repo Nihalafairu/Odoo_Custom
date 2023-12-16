@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+        <!-- this is to show the combo products in the order line-->
+
+    <t t-name="Orderline" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension" owl="1">
+        <xpath expr="//ul[hasclass('info-list')]" position="inside">
+             <!-- required products in the order line  -->
+            <t t-if="props.line.product['combo_pro'] ">
+                <t t-foreach="props.line.product['combo_pro']" t-as="combo" t-key="combo_index">
+                <t t-esc="combo"/> * <t t-esc="props.line.quantity"/>
+                    <br></br>
+            </t>
+            </t>
+             <!--optional products in the order line-->
+            <t t-if="props.line.product['optional'] ">
+                <t t-foreach="props.line.product['optional']" t-as="combo" t-key="combo_index">
+                <t t-esc="combo"/>  * <t t-esc="props.line.quantity"/>
+                    <br></br>
+            </t>
+            </t>
+
+        </xpath>
+    </t>
+
+</templates>

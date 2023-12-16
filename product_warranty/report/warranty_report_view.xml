@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <template id="report_warranty">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+
+                    <h2 style="text-align:center"> Product Warranty</h2>
+                    <div>
+                        <strong>Printed Date:</strong>
+                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                    </div>
+                    <div>
+
+                        <t t-if="data['start_date']">
+                            <strong>Start Date :</strong>
+                            <span t-esc="data['start_date']"/>
+                        </t>
+                    </div>
+                    <div>
+
+                        <t t-if="data['end_date']">
+                            <strong>End Date :</strong>
+                            <span t-esc="data['end_date']"/>
+                        </t>
+                    </div>
+                    <div>
+                        <t t-if="data['customer_id']">
+                            <strong>Customer :</strong>
+                            <span t-esc="data['customer_id'][1]"/>
+                        </t>
+                    </div>
+                    <div>
+
+                        <t t-if="len(data['products_name'])==1">
+                            <strong>Product :</strong>
+                            <span t-esc="data['products_name'][0]"/>
+                        </t>
+                    </div>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Invoice</th>
+                                <t t-if="not data['customer_id']">
+                                    <th>Customer</th>
+                                </t>
+                                <t t-if="not len(data['products_name'])==1">
+                                    <th>Product</th>
+                                </t>
+                                <th>Request Date</th>
+                                <th>Warranty Expiry Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="data['report']" t-as="i">
+                                <td>
+                                    <span t-esc="i['invoice']"/>
+                                </td>
+
+                                <t t-if="not data['customer_id']">
+                                    <td>
+                                        <t t-esc="i['customer']"/>
+                                    </td>
+                                </t>
+                                <t t-if="not len(data['products_name'])==1">
+                                    <td>
+                                        <span t-esc="i['product']"/>
+                                    </td>
+                                </t>
+                                <td>
+                                    <span t-esc="i['request_date']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="i['warranty_expire_date']"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <record id="purchase_wizard_form" model="ir.ui.view">
+        <field name="name">purchase.wizard.form</field>
+        <field name="model">purchase.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="product_name"/>
+                    <field name="product_id" invisible="1"/>
+                    <field name="quantity"/>
+                    <field name="price"/>
+
+                </group>
+                <footer>
+                    <button name="confirm_rfq" string="confirm" type="object" class="btn-primary"/>
+                    <button string="cancel" special="cancel"  class="btn-primary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="wizard_view" model="ir.actions.act_window">
+        <field name="name">automatic purchase order</field>
+        <field name="res_model">purchase.wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_id" ref="purchase_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<!--project template view-->
+<odoo>
+    <record id="project_project_template_form_view" model="ir.ui.view">
+        <field name="name">project.project.template.view.form</field>
+        <field name="model">project.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_create" class="oe_highlight" string="Create Project" type="object"/>
+                </header>
+                <sheet>
+                    <field name="name"/>
+                    <group>
+                        <group>
+                            <field name="customer_id"/>
+                            <field name="tag_ids" widget="many2many_tags"/>
+                            <field name="company_id"/>
+                        </group>
+                        <group>
+                            <field name="project_manager_id"/>
+
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                        <field name="description" placeholder="Project description..."/>
+                        </page>
+                        <page string="Settings">
+                            <group>
+                                <field name="privacy_visibility" widget="radio"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

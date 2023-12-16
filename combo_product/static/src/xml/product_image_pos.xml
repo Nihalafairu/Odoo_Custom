@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--this is used to show combo  product ribbon in product card -->
+<templates id="template" xml:space="preserve">
+    <t t-name="ProductItem" t-inherit="point_of_sale.ProductItem" t-inherit-mode="extension" owl="1" >
+
+        <xpath expr="//div[hasclass('product-img')]" position="inside">
+            <t t-if=" props.product.combo_ids[0] != undefined">
+                <div class="ribbon" style="text-align:center;"  >
+                Combo Product
+                </div>
+            </t>
+
+
+        </xpath>
+    </t>
+</templates>

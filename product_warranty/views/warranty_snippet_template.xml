@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <template id="external_snippets" inherit_id="website.snippets" priority="8">
+    <xpath expr="//div[@id='snippet_effect']//t[@t-snippet][last()]" position="after">
+           <t t-snippet="product_warranty.warranty_snippet"/>
+       </xpath>
+    </template>
+</odoo>

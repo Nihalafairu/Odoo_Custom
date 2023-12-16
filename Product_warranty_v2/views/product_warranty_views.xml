@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <record id="product_warranty_view" model="ir.actions.act_window">
+        <field name="name">Product Warranty2</field>
+        <field name="res_model">product.warranty2</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="warranty_tree_view" model="ir.ui.view">
+        <field name="name">warranty.view.tree</field>
+        <field name="model">product.warranty2</field>
+        <field name="arch" type="xml">
+            <tree string="Tests">
+                <field name="reference_no"/>
+                <field name="product_id"/>
+                <field name="lot_serial"/>
+                <field name="request_date"/>
+                <field name="customer_id"/>
+                <field name="purchase_date"/>
+            </tree>
+        </field>
+    </record>
+    <record id="warranty_view_form" model="ir.ui.view">
+        <field name="name">warranty.view.form</field>
+        <field name="model">product.warranty2</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_submit" string="Submit" type="object" class="oe_highlight"/>
+                    <button name="action_approve" string="Approve" type="object" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,to_approve,approved,"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="reference_no"/>
+
+                        <group>
+                            <field name="invoice_id"/>
+                            <field name="product_id"/>
+                            <field name="product_ids" invisible="1"/>
+                            <field name="lot_serial"/>
+                        </group>
+                        <group>
+                            <field name="request_date"/>
+                            <field name="customer_id"/>
+                            <field name="purchase_date"/>
+                            <field name="warranty_expiry_date"/>
+
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <menuitem id="product_warranty2" name="Product Warranty2"/>
+    <menuitem id="product_warranty_action" name="warranty" action="product_warranty_view"/>
+
+</odoo>

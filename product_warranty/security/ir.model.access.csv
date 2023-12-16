@@ -1,0 +1,11 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_product_warranty,access_product_warranty,model_product_warranty,base.group_user,0,0,0,0
+access_product_warranty_manager,access_product_warranty_manager,model_product_warranty,product_warranty.warranty_manager_access,1,1,1,1
+access_product_warranty_user,access_product_warranty_user,model_product_warranty,product_warranty.warranty_user_access,1,1,1,0
+access_product_template,access_product_template,model_product_template,base.group_user,1,1,1,1
+access_warranty_invoice,access_warranty_invoice,model_account_move,base.group_user,1,1,1,1
+access_warranty_wizard,access_warranty_wizard,model_warranty_wizard,base.group_user,1,1,1,1
+
+
+
+

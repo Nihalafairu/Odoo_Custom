@@ -1,0 +1,4 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_so_approval,access_so_approval,model_sale_order,base.group_user,1,0,0,0
+access_so_approval_sale,access_so_approval_sale1,model_sale_order,so_approval.group_sale_salesperson,1,1,1,1
+access_so_approval_manager,access_so_approval_manager1,model_sale_order,so_approval.group_sale_manager,1,1,1,1

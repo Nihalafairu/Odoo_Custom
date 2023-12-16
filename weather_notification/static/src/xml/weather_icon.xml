@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<templates>
+    <!--               to create an icon in systray                 -->
+    <t t-name="IconSystrayDropdown" owl="1">
+        <t t-if="state.weather=='True'">
+            <li class="o_mail_navbar_item" style='list-style-type: none;'>
+                <a class="dropdown-toggle o-no-caret"
+                   data-bs-toggle="dropdown"
+                   data-display="static"
+                   aria-haspopup="true" aria-expanded="false"
+                   title="weather" href="#" role="button">
+                    <i id='create_qr' class="fa fa-cloud"
+                       style="color: white;" t-on-click="_onClick"
+                       role="img" aria-label="weather"/>
+                </a>
+                <!--                  Weather Details                       -->
+                <ul class="o_mail_navbar_dropdown dropdown-menu dropdown-menu-right" role="menu">
+                    <li class="o_mail_navbar_dropdown_top" style='height:280px;width:400px;'>
+                        <div class="container">
+                            <div>
+                                <form class="address_form" name="f_translate">
+                                    <center>
+                                        <h5 style="text-align:center">Weather Notification</h5>
+                                    </center>
+                                    <div>
+                                        <h3 style="text-align:center">
+                                            <t t-esc="state.place"/>
+                                        </h3>
+                                    </div>
+                                    <div>
+                                        <div id="left" style="float: left; width:50%" >
+                                            <h3 style="font-size:75px;">
+                                            <t t-esc="state.main"/>
+                                        </h3>
+                                        </div>
+                                        <div id="right" style="float: right; width:50%">
+                                            <span t-if="state.icon">
+                                            <img t-attf-src="https://openweathermap.org/img/wn/{{state.icon}}@2x.png"/>
+                                        </span>
+                                        </div>
+
+                                    </div>
+                                    <div>
+                                        <strong style="font-size:30px" t-if="state.temp">Temperature:</strong>
+                                        <span style="font-size:30px">
+                                            <t t-esc="state.temp" />
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <strong style="font-size:30px" t-if="state.humidity">Humidity:</strong>
+                                        <span style="font-size:30px">
+                                            <t t-esc="state.humidity"/>
+                                        </span>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </t>
+    </t>
+
+</templates>

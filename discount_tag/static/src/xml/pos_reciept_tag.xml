@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--this is used to show discount in the order line-->
+<odoo>
+    <t t-name="OrderLinesReceipt" t-inherit="point_of_sale.OrderLinesReceipt" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-foreach='receipt.orderlines']" position="inside">
+            <t t-if="line.discount_tag">
+                 discount:  $<t t-esc="line.discount_tag"/>
+            </t>
+        </xpath>
+    </t>
+</odoo>

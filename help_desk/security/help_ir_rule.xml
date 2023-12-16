@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- employee can only see their records    -->
+    <record id="helpdesk_own_access" model="ir.rule">
+        <field name="name">Manager can only view the tickets</field>
+        <field ref="model_employee_helpdesk" name="model_id"/>
+        <field name="domain_force">[('create_uid','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('help_desk.helpdesk_user_access'))]"/>
+    </record>
+        <!--manager can see all tickets        -->
+    <record id="helpdesk_all_access" model="ir.rule">
+        <field name="name">Manager can see all Documents</field>
+        <field ref="model_employee_helpdesk" name="model_id"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('help_desk.helpdesk_manager_access'))]"/>
+    </record>
+</odoo>

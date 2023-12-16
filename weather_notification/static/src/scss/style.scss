@@ -1,0 +1,6 @@
+.o_MessagingMenu_dropdownMenu:not(.o-isDeviceSmall) {
+  width: 300px;
+  min-height: 50px;
+  max-height: Min(calc(100vh - 140px), 630px);
+  z-index: 1055;
+}

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="dashboard.InventoryDashboard" owl="1">
+        <link rel="stylesheet" href="/dashboard/static/src/assets/css/style.css"/>
+
+<!--        dashboard header-->
+        <div class="parent" style="height:100%; overflow: auto;">
+            <div style="float:right; padding:7px">
+                <select name="your_field" id="your_field_id"
+                          style="width:250px; height:30px" class="form-select" t-on-change="onPeriodChange">
+                              <option value="0">Filter by</option>
+                              <option value="30">This Month</option>
+                              <option value="7">This Week</option>
+                </select>
+            </div>
+            <div class="content-wrapper-inventory">
+                <div class="page-header-inventory">
+                    <h3 class="page-title-inventory">
+                        <span class="page-title-icon-inventory bg-gradient-primary text-white me-2">
+                        <i class="mdi mdi-home"></i>
+                        </span>
+                        Inventory Dashboard
+                    </h3>
+                    <nav aria-label="breadcrumb-inv">
+                    <ul class="breadcrumb-inv">
+                        <li class="breadcrumb-inv-item active" aria-current="page">
+                            <span></span>Overview
+                            <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                        </li>
+                    </ul>
+                    </nav>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 stretch-card grid-margin">
+                        <div class="card bg-gradient-danger card-img-holder text-white">
+                            <div class="card-body-inv">
+                                <h4 class="font-weight-normal mb-3">Incoming Stock
+<!--                                    <i>class="mdi mdi-chart-line mdi-24px float-right"></i>-->
+                                </h4>
+                                <h2 class="mb-5">2115 </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 stretch-card grid-margin">
+                        <div class="card bg-gradient-info card-img-holder text-white">
+                            <div class="card-body-inv">
+                                <h4 class="font-weight-normal mb-3">Outgoing Stock <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                                </h4>
+                                <h2 class="mb-5">466</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 stretch-card grid-margin">
+                        <div class="card bg-gradient-success card-img-holder text-white">
+                            <div class="card-body-inv">
+                                <h4 class="font-weight-normal mb-3">stock Valuation<i class="mdi mdi-diamond mdi-24px float-right"></i>
+                                </h4>
+                                <h2 class="mb-5">$ 50000</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                row                         -->
+                <div class="row">
+                    <div class="col-md-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body-inv">
+                                <h4 class="card-title float-left">Incoming Stock</h4>
+                                <canvas id="visit-sale-chart" width="600" height="300" t-ref="incomingStock">
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body-inv">
+                                <h4 class="card-title">Outgoing Stock</h4>
+                                    <canvas id="traffic-chart" width="600" height="300" t-ref="outgoingStock">
+                                    </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  <!--              next row-->
+                <div class="row">
+                    <div class="col-md-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body-inv" style="height:400px;">
+                                <h4 class="card-title float-left">Product Expense</h4>
+                                    <canvas id="visit-sale-chart" width="600" height="600px" t-ref="productExpense">
+                                    </canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body-inv">
+                                <h4 class="card-title">Stock Valuation</h4>
+                                    <canvas id="traffic-chart" width="600" height="300" t-ref="stockValuation">
+                                    </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                  row                    -->
+                <div class="row">
+                    <div class="col-8 grid-margin">
+                        <div class="card">
+                            <div class="card-body-inv">
+                                <h3 class="card-title">Location Wise Stock Information</h3>
+                                <div class="table-responsive">
+                                    <table class="table-inv" style="border: 1px solid black;border-collapse:
+                                                    collapse;font-family: sans-serif">
+                                        <thead style="border-bottom: 1px solid black;
+                                              padding: 15px; text-align: center; height: 50px;
+                                            vertical-align: center;background-color: rgba(255, 159, 64, 0.2);
+                                             font-size: 1.2em; font-weight:bold">
+                                            <tr>
+                                                <th> Location </th>
+                                                <th> Products </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr t-foreach="state.location" t-as="data" t-key="data_index"
+                                                style="border-bottom: 1px solid black; nth-child(even){background-color: #ddd">
+                                                <td style=" height: 50px;
+                                                    vertical-align: center;
+                                                        padding: 15px;">
+                                                    <span t-esc="data"/>
+                                                </td>
+                                                 <td style="height: 50px;
+                                                            vertical-align: center;
+                                                            padding: 15px;">
+                                                     <t t-esc="state.location[data]"/>
+                                                 </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body-inv" style="height:250px">
+                                <h4 class="card-title float-left">Internal Transfers</h4>
+                                <canvas id="visit-sale-chart" width="600" height="300" t-ref="internalTransfers" >
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </t>
+
+</templates>

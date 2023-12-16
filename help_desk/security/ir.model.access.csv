@@ -1,0 +1,4 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_employee_helpdesk,access_employee_helpdesk,model_employee_helpdesk,base.group_user,0,0,0,0
+access_employee_helpdesk_user,access_employee_helpdesk_user,model_employee_helpdesk,help_desk.helpdesk_user_access,1,1,1,1
+access_employee_helpdesk_manager,access_employee_helpdesk_manager,model_employee_helpdesk,help_desk.helpdesk_manager_access,1,1,1,1

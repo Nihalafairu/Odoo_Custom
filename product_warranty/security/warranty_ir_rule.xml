@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="warranty_own_access" model="ir.rule">
+        <field name="name">User can see own documents only</field>
+        <field ref="model_product_warranty" name="model_id"/>
+        <field name="domain_force">['|',('create_uid','=',user.id),('create_uid','=',False)]</field>
+        <field name="groups" eval="[(4, ref('product_warranty.warranty_user_access'))]"/>
+    </record>
+    <record id="warranty_all_access" model="ir.rule">
+        <field name="name">Manager can see all Documents</field>
+        <field ref="model_product_warranty" name="model_id"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('product_warranty.warranty_manager_access'))]"/>
+    </record>
+</odoo>

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+  <record id="test_model_id" model="ir.model" >
+    <field name="info"> Main super-class for regular database-persisted Odoo models.
+    </field>
+    <field name="is_mail_thread" eval="True"/>
+    <field name="is_mail_activity" eval="True"/>
+    <field name="model">x_test_test</field>
+    <field name="name">test.test</field>
+    <field name="state">manual</field>
+    <field name="transient" eval="False"/>
+  </record>
+    <record id="test_model" model="ir.model.fields">
+        <field name="name">test_model</field>
+        <field name="res_model">x_test_test</field>
+        <field name="view_mode">form</field>
+    </record>
+
+<!--    <menuitem id="test_model" name="test model"/>-->
+<!--    <menuitem id="test_model_menu_action" parent="test_model" action="test_model"-->
+<!--              sequence="0"/>-->
+
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<!--Create Project Template Button is created in the form-->
+<odoo>
+    <record id="reverse_project_template_form" model="ir.ui.view">
+        <field name="name">project.project.revere.template</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button type="object" name="action_create_template" string="Create Project Template"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

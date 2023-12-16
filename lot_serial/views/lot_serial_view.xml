@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <record id="lot_view_form" model="ir.ui.view">
+        <field name="name">lot.serial.view.form</field>
+        <field name="model">lot.serial</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="lot_serial" string="Select a file"/>
+                </group>
+                <footer>
+                    <button
+                            name="import_lot_serial"
+                            string="Import"
+                            type="object"
+                            class="btn-primary"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="lot_view" model="ir.actions.act_window">
+        <field name="name">lot/serial upload</field>
+        <field name="res_model">lot.serial</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_id" ref="lot_view_form"/>
+        <field name="target">new</field>
+    </record>
+
+
+
+    <menuitem id="lot_serial" name="Lot/Serial" sequence="2"/>
+    <menuitem id="import_lot_serial" name="Import" parent="stock.menu_warehouse_report"
+              action="lot_view" sequence="2"/>
+</odoo>

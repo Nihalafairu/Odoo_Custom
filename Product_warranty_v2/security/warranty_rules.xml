@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <record id="warranty2_own_documents" model="ir.rule">
+        <field name="name">Own documents</field>
+        <field ref="model_product_warranty2" name="model_id"/>
+        <field name="domain_force">['|',('create_uid','=',user.id),('create_uid','=',False)]</field>
+        <field name="groups" eval="[(4, ref('Product_warranty_v2.warranty2_user_access'))]"/>
+    </record>
+    <record id="warranty2_all_documents" model="ir.rule">
+        <field name="name">All documents</field>
+        <field ref="model_product_warranty2" name="model_id"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('Product_warranty_v2.warranty2_manager_access'))]"/>
+    </record>
+</odoo>

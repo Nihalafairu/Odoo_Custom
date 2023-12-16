@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <record id="project_project_templates_action" model="ir.actions.act_window">
+        <field name="name">Project Template</field>
+        <field name="res_model">project.template</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+    <record id="project_task_templates_action" model="ir.actions.act_window">
+        <field name="name">Task Template</field>
+        <field name="res_model">task.template</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+    <menuitem id="project_menu_template" name="Templates" parent="project.menu_main_pm" sequence="90"/>
+    <menuitem id="project_project_templates" name="Project Templates" parent="project_menu_template"
+              action="project_project_templates_action"/>
+    <menuitem id="project_task_templates" name="Task Templates" parent="project_menu_template"
+              action="project_task_templates_action"/>
+</odoo>

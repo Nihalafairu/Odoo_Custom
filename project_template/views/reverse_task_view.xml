@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<!--Create Task Template Button is created in the form-->
+<odoo>
+    <record id="reverse_task_template_form" model="ir.ui.view">
+        <field name="name">project.task.reverse.template</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button type="object" name="action_create_task_template" string="Create Task Template"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

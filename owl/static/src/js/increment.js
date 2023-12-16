@@ -1,0 +1,19 @@
+const { Component, useState } = owl
+
+class Increment extends Component{
+    setup(){
+        this.state = useState({
+            value: 0
+        })
+    }
+    onValueChange(val){
+        this.state.value += val
+    }
+
+
+}
+Increment.template = "Increment";
+const Systray = {
+    Component:Increment
+}
+registry.category('systray').add('increment',Systray)

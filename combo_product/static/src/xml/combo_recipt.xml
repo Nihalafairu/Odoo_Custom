@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--                this is used to show combo products in receipt              -->
+<odoo>
+    <t t-name="OrderLinesReceipt" t-inherit="point_of_sale.OrderLinesReceipt" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-foreach='receipt.orderlines']" position="inside">
+            <div>
+                <t t-if="line['combo_products'] != undefined">
+                    <t t-foreach="line['combo_products']" t-as="combo" t-key="combo_index">
+                        <t t-esc="combo"/> * 1
+                        <br/>
+                    </t>
+                </t>
+                <t t-if="line['optional'] != undefined">
+                    <t t-foreach="line['optional']" t-as="opt" t-key="opt_index">
+                    <t t-esc="opt"/> * 1
+                    <br></br>
+                </t>
+                </t>
+            </div>
+        </xpath>
+    </t>
+</odoo>

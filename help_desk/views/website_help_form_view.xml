@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <!-- Helpdesk tree view    -->
+    <template id="helpdesk_tree_view" name="Employee Helpdesk">
+        <t t-call="website.layout">
+            <div class="container" style="margin-top:17px">
+
+                <h1 style="text-align:center;">EMPLOYEE HELPDESK</h1>
+                <form action="/form/helpdesk" method="post">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <button type="submit" class="btn btn-primary">create</button>
+                </form>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Ticket Reference</th>
+                            <th>Description</th>
+                            <th>State</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="helpdesk_ids" t-as="helpdesk">
+                            <td>
+                                <span t-esc="helpdesk.reference_no"/>
+                            </td>
+                            <td>
+                                <span t-esc="helpdesk.details"/>
+                            </td>
+                            <td>
+                                <t t-if="helpdesk.state == 'to_approve'">
+                                    <span> To Approve</span>
+                                </t>
+                                <t t-if="helpdesk.state == 'approved'">
+                                    <span>Approved</span>
+                                </t>
+                                <t t-if="helpdesk.state == 'reject'">
+                                    <span>Rejected</span>
+                                </t>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        </t>
+
+    </template>
+    <template id="website_helpdesk_template" name="Helpdesk Form">
+        <t t-call="website.layout">
+            <!--    help desk form page        -->
+            <div class="container" style="margin-top:17px">
+                <h1 style="text-align:center;">EMPLOYEE HELPDESK</h1>
+                <br/>
+                <form action="/helpdesk" method="post">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <button type="submit" class="btn btn-primary">Back</button>
+                </form>
+                <br/>
+                <form class="form col-6" method="post" action="/create/helpdesk">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                    <div class="form-group">
+                        <label for="help">Employee Helpdesk</label>
+                        <input type="text" name="help" required="1" id="help" class="form-control"/>
+                    </div>
+                    <br/>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </t>
+    </template>
+    <!-- success page for helpdesk   -->
+    <template id="website_success_helpdesk" name="Helpdesk">
+        <t t-call="website.layout">
+            <div class="container" style="margin-top:7px;">
+                    <form action="/helpdesk" method="post">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <button type="submit" class="btn btn-primary">Back</button>
+                    </form>
+                    <br/>
+                <div class="alert alert-success">
+                    <span>
+                        Successfully Created help desk ticket:
+                        <t t-esc="helpdesk_id.reference_no"/>
+                    </span>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

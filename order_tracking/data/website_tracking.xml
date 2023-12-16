@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <record id="website_tracking_menu" model="website.menu">
+        <field name="name">Order Tracking</field>
+        <field name="url">/tracking</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">90</field>
+    </record>
+</odoo>

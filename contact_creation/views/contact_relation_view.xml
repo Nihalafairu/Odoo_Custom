@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+<!--                      to add page and field in survey form                     -->
+        <record id="contact_relation_view_form" model="ir.ui.view">
+            <field name="name">survey.contact.relation.form</field>
+            <field name="model">survey.survey</field>
+            <field name="inherit_id" ref="survey.survey_survey_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='description_done']" position="after" create="false">
+                    <page string="Contact Relation">
+                        <field name="contact_ids">
+                            <tree editable="bottom" >
+                                <field name="survey_id" invisible="1"/>
+                                <field name="title_id"/>
+                                <field name="field_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <data>
+        <record id="stock_view_form" model="ir.ui.view">
+            <field name="name">stock.view.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='note']" position="after">
+                    <page string="Track Orders">
+                        <field name="track_ids">
+                            <tree editable="bottom">
+                                <field name="location_id"/>
+                                <field name="destination_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--                    combo popup template                        -->
+<templates id="template" xml:space="preserve">
+    <t t-name="ComboPos" owl="1">
+
+        <div role="dialog" class="modal-dialog">
+            <div class="parent">
+            <div class="popup popup-couponproducts" t-ref="comboDetails">
+                <div class="title" style="height:5px;background-color:green;">
+                    <span style=" position: absolute; margin-left: -138px;">
+                        <t t-esc="props.body"/>
+                    </span>
+                </div>
+                <!--                required                          -->
+                <div class="body-pop">
+                    <div class="sub-title" >
+                        <t t-foreach="state.required_categ" t-as="data" t-key="data_index">
+                            <t t-set="counter" t-att-value="0"/>
+                            <t t-foreach="state.required_categ[data]" t-as="data_l" t-key="data_l_index">
+                                <t t-set="counter" t-value="counter+1"/>
+                                <t t-if="data_l">
+                                    <t t-if="counter == 1">
+                                        <h5 style="font-size:25px;">Required</h5>
+                                    </t>
+                                </t>
+                            </t>
+                        </t>
+                    </div>
+                    <div class="pop">
+                    <t t-foreach="state.required_categ" t-as="data" t-key="data_index">
+                         <t t-foreach="state.required_categ[data]" t-as="data_l" t-key="data_l_index">
+                            <div style="background-color:grey;"><strong><t t-esc="data_l"/></strong></div>
+                             <br></br>
+                             <div class="grid-container">
+                                 <t t-foreach="state.required_categ[data][data_l]" t-as="data_k" t-key="data_k_index">
+                                    <div>
+                                        <div style="position:relative">
+                                         <img class="card-img-top"
+                                              t-attf-src="data:image/png;base64,{{state.required_categ[data][data_l][data_k]}}"
+                                              style="height:110px; padding:4px;">
+                                         </img>
+                                            <div class="sel-ribbon"
+                                                 style="text-align:center; position:absolute; background-color:green;"
+                                                 t-ref="selectedRibbon">
+                                               selected
+                                            </div>
+                                         </div>
+                                        <br></br>
+                                        <t t-esc="data_k"/>
+                                    </div>
+                                 </t>
+                             </div>
+                             <br></br>
+                         </t>
+                     </t>
+                </div>
+                <!--                optional                      -->
+                    <t t-foreach="state.optional_categ" t-as="data" t-key="data_index">
+                        <t t-set="counter" t-att-value="0"/>
+                        <t t-foreach="state.optional_categ[data]" t-as="data_l" t-key="data_l_index">
+                            <t t-set="counter" t-value="counter+1"/>
+                            <t t-if="data_l">
+                                <t t-if="counter == 1">
+                                    <h5 style="font-size:25px;">Optional</h5>
+                                </t>
+                            </t>
+                        </t>
+                    </t>
+                    <div class="pop">
+                    <t t-foreach="state.optional_categ" t-as="data" t-key="data_index">
+                         <t t-foreach="state.optional_categ[data]" t-as="data_l" t-key="data_l_index">
+                             <div style="background-color:grey;padding: 5px;">
+                                <strong><t t-esc="data_l"/></strong>
+                                 <t t-foreach="state.count['category']" t-as="data_c" t-key="data_c_index">
+                                     <t t-if="data_c == data_l and state.count['category'][data_c] != 0">
+                                        <span><p>(Choose <t t-esc="state.count['category'][data_c]"/> items)</p></span>
+                                     </t>
+                                 </t>
+                             </div>
+                             <br></br>
+                             <div class="grid-container">
+                                 <t t-foreach="state.optional_categ[data][data_l]" t-as="data_k" t-key="data_k_index">
+                                     <t t-set="counter" t-att-value="0"/>
+                                    <div>
+                                        <div style="position:relative">
+                                            <t t-foreach="state.count['category']" t-as="data_c" t-key="data_c_index">
+                                                                            <t t-set="counter" t-value="counter+1"/>
+                                                <t t-if="counter == 1">
+                                            <img class="card-img-top"
+                                                 t-on-click="() => this.showRibbon(data_k,state.count['category'][data_l])"
+                                                 t-attf-src="data:image/png;base64,{{state.optional_categ[data][data_l][data_k]}}"
+                                                 style="height:110px;padding:4px;"/>
+                                                </t>
+                                            </t>
+                                            <t t-foreach="state.product_name" t-as="data_i" t-key="data_i_index">
+                                            <t t-if="data_k == data_i">
+                                            <div class="sel-ribbon" t-on-click="() => this.showRibbon(data_k,state.count['category'][data_c])"
+                                                 style="text-align:center; position:absolute; background-color:green;"
+                                                 t-ref="selectedRibbon">
+                                               selected
+                                            </div>
+                                            </t>
+                                            </t>
+                                        </div>
+                                        <br></br>
+                                        <t t-esc="data_k"/>
+                                    </div>
+                                 </t>
+                            </div>
+                             <br></br>
+                         </t>
+                     </t>
+                </div>
+                </div>
+                <!--                footer              -->
+                <div class="footer">
+                <button class="btn btn-primary success" t-on-click="cancel">
+                    <t t-esc="props.cancelText"/>
+                </button>
+                    <button class="btn btn-primary" type="object" style="background-color:green;"
+                         t-on-click="() => this.confirmOrder(state.required_categ)">
+                    <t t-esc="props.confirmText"/>
+                </button>
+            </div>
+        </div>
+                </div>
+    </div>
+</t>
+</templates>

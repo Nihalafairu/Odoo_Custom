@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+        <!-- security group created for module   -->
+    <record model="ir.module.category" id="helpdesk_management">
+        <field name="name">Helpdesk</field>
+        <field name="description">User access levels for Helpdesk module</field>
+        <field name="sequence">10</field>
+    </record>
+    <!-- employee group       -->
+    <record id="helpdesk_user_access" model="res.groups">
+        <field name="name">Employee</field>
+        <field name="category_id" ref="helpdesk_management"/>
+    </record>
+    <!-- manager group   -->
+    <record id="helpdesk_manager_access" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="helpdesk_management"/>
+        <field name="implied_ids" eval="[(4, ref('help_desk.helpdesk_user_access'))]"/>
+    </record>
+
+</odoo>

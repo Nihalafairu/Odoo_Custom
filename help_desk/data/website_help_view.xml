@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <!--    create a help desk menu in website-->
+    <record id="website_helpdesk_menu" model="website.menu">
+        <field name="name">Help Desk</field>
+        <field name="url">/helpdesk</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">90</field>
+    </record>
+</odoo>

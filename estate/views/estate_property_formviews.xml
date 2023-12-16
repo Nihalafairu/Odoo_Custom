@@ -1,0 +1,111 @@
+`<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <record id="estate_search_view" model="ir.ui.view">
+        <field name="name">estate.view.search</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <search string="Tests">
+                <field name="name"/>
+
+                <field name="bedrooms"/>
+                <separator/>
+                <filter string="Archieved" name="inactive" domain="[('active', '=', False)]"/>
+                <group expand="1" string="Group By">
+                    <filter string="name" name="name"
+                            context="{'group_by':'name'}"/>
+                    <filter string="postcode" name="postcode"
+                            context="{'group_by':'postcode'}"/>
+                </group>
+            </search>
+        </field>
+
+    </record>
+    <record id="estate_tree_view" model="ir.ui.view">
+        <field name="name">estate.view.tree</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <tree string="Tests">
+                <field name="name"/>
+                <field name="postcode"/>
+                <field name="property_type"/>
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+                <field name="expected_price"/>
+                <field name="selling_price"/>
+                <field name="date_availability"/>
+            </tree>
+        </field>
+    </record>
+     <record id="estate_tree_offer_view" model="ir.ui.view">
+        <field name="name">estate.view.tree</field>
+        <field name="model">estate.property.offers</field>
+        <field name="arch" type="xml">
+            <tree string="Tests">
+                <field name="price"/>
+                <field name="partner"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+    <record id="estate_view_form" model="ir.ui.view">
+        <field name="name">estate.view.form</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" placeholder="name..."/>
+                            <field name="description"/>
+                            <field name="property_type"/>
+                            <field name="property_tag" widget="many2many_tags"/>
+
+                        </group>
+                        <group>
+                            <field name="active"/>
+                            <field name="postcode"/>
+                            <field name="date_availability"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Description">
+                            <group>
+                                <field name="description"/>
+                                <field name="expected_price"/>
+                                <field name="selling_price"/>
+                                <field name="bedrooms"/>
+                                <field name="living_area"/>
+                            </group>
+                        </page>
+                        <page string="Other Info">
+                            <group>
+                                <field name="facades"/>
+                                <field name="garage"/>
+                                <field name="garden"/>
+                                <field name="garden_area"/>
+                                <field name="garden_orientation"/>
+                                <field name="state"/>
+                            </group>
+                        </page>
+                        <page string="Details">
+                            <group>
+                                <field name="salesperson"/>
+                                <field name="buyer"/>
+                            </group>
+                        </page>
+                        <page string="offers">
+                            <field name="offers_id"/>
+                        </page>
+
+
+
+                    </notebook>
+
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
