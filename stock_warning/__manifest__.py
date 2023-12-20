@@ -9,7 +9,10 @@
     'website':"www.odoo.com",
     'description': "Send a stock warning email to the inventory manager.",
     'data': [
+        'data/ir_cron.xml',
+        'data/warning_email.xml',
         'views/stock_warning_config.xml',
+
 
     ],
 

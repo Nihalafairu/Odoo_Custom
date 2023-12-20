@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <!--   to create a fields in settings  -->
     <record id="res_config_stock_warning_view" model="ir.ui.view">
         <field name="name">res.config.settings.stock.warning.view</field>
         <field name="model">res.config.settings</field>
@@ -12,7 +13,7 @@
                         <field name="stock_warning"/>
                     </div>
                     <div class="o_setting_right_pane">
-                        <label for="stock_warning" string="stock_warning"/>
+                        <label for="stock_warning" string="Stock Warning"/>
                         <div class="text-muted mb16">
                             Stock Warning Email
                         </div>
@@ -22,8 +23,8 @@
 
                         </div>
                         <div>
-                            <label for="product_id" class="o_light_label" attrs="{'invisible':[('stock_warning','=',False)]}"/>
-                            <field  name="product_id" attrs="{'invisible':[('stock_warning','=',False)]}"/>
+                            <label for="product_ids" class="o_light_label" attrs="{'invisible':[('stock_warning','=',False)]}"/>
+                            <field  name="product_ids" widget="many2many_tags"  attrs="{'invisible':[('stock_warning','=',False)]}"/>
                         </div>
                     </div>
                 </div>
